@@ -1,0 +1,17 @@
+body {
+  background-color: #b5f7ff !important;
+}
+
+.card {
+  background-color: white !important;
+}
+.card-title {
+  font-weight: 800 !important;
+}
+.card-text {
+  font-weight: 500 !important;
+}
+
+.comment {
+  font-size: 105%;
+}

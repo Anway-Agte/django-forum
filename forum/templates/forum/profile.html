@@ -1,0 +1,160 @@
+{% extends 'forum/layout.html' %}
+
+{% block body %}
+
+<body class="profile-page sidebar-collapse">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="300">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="" rel="tooltip" title="Coded by Creative Tim" data-placement="bottom" target="_blank">
+          We the men
+        </a>
+        <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navigation">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="{% url 'space' %}" class="nav-link"> Space</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'logout' %}" class="nav-link"> Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('../../../static/img/jordan-mcqueen-RQ-ww1Qz4FY-unsplash.jpg');">
+    <div class="filter"></div>
+  </div>
+  <div class="section profile-content">
+    <div class="container">
+      <div class="owner">
+        <div class="avatar">
+          <img src="../assets/img/faces/joe-gardner-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+        </div>
+        <div class="name">
+          <h4 class="title">{{profile.username}}
+            <br />
+          </h4>
+          <h6 class="description">Music Producer</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 ml-auto mr-auto text-center">
+          <p>An artist of considerable range, Jane Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+          <br />
+          {% if request.user.username == profile.username %}
+          <btn class="btn btn-outline-default btn-round"><i class="fa fa-cog"></i> Edit</btn>
+          {% endif %}
+        </div>
+      </div>
+      <br/>
+      <div class="nav-tabs-navigation">
+        <div class="nav-tabs-wrapper">
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#threads" role="tab">Threads</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#following" role="tab">Following</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Tab panes -->
+      <div class="tab-content following">
+        <div class="tab-pane active" id="follows" role="tabpanel">
+          <div class="row">
+            <div class="col-md-6 ml-auto mr-auto">
+              <ul class="list-unstyled follows">
+                <li>
+                  <div class="row">
+                    <div class="col-lg-2 col-md-4 col-4 ml-auto mr-auto">
+                      <img src="../assets/img/faces/clem-onojeghuo-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                    </div>
+                    <div class="col-lg-7 col-md-4 col-4  ml-auto mr-auto">
+                      <h6>Flume
+                        <br/>
+                        <small>Musical Producer</small>
+                      </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-4  ml-auto mr-auto">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="" checked>
+                          <span class="form-check-sign"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <hr />
+                <li>
+                  <div class="row">
+                    <div class="col-lg-2 col-md-4 col-4 mx-auto ">
+                      <img src="../assets/img/faces/ayo-ogunseinde-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                    </div>
+                    <div class="col-lg-7 col-md-4 col-4">
+                      <h6>Banks
+                        <br />
+                        <small>Singer</small>
+                      </h6>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-4">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="">
+                          <span class="form-check-sign"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane text-center" id="following" role="tabpanel">
+          <h3 class="text-muted">Not following anyone yet :(</h3>
+          <button class="btn btn-warning btn-round">Find artists</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer    ">
+    <div class="container">
+      <div class="row">
+        <nav class="footer-nav">
+          <ul>
+            <li>
+              <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
+            </li>
+            <li>
+              <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
+            </li>
+            <li>
+              <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="credits ml-auto">
+          <span class="copyright">
+            ©
+            <script>
+              document.write(new Date().getFullYear())
+            </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+{% endblock %}
