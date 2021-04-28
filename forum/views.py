@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , logout
 from django.contrib.auth import login as auth_login 
 from django.template import RequestContext
-from .models import Thread
+from .models import Thread,Comment
 # Create your views here.
 def index(request):
     return HttpResponse(render(request , "forum/index.html")) 
@@ -130,5 +130,23 @@ def profile(request , username):
             }
             return render(request , "forum/profile.html" , context = context)
         else:
-            return HttpResponseRedirect(reverse(space))
+            return HttpResponseRedirect(reverse('space'))
         
+
+def addComment(request, thread_id:int):
+    if request.method == "POST":
+        try:
+            user = User.objects.get(id=request.user.id)
+            print(user)
+        except User.DoesNotExist:
+            user = None  
+        try:
+            thread = Thread.objects.get(id=thread_id)
+            print(thread)
+        except Thread.DoesNotExist:
+            thread = None 
+        if user is not None and thread is not None:
+            comment = Comment(user=user,thread=thread,commentText=request.POST['commentText'])
+            comment.save()
+    return HttpResponseRedirect(reverse('space'))
+ 

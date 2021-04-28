@@ -88,19 +88,17 @@
           <br>
           <p class="card-text">{{thread.content}}</p>
           <hr>
+          {% for comment in thread.getComments %}
           <div class="d-flex text-muted pt-3">
             <p class="pb-3 mb-0 small lh-sm border-bottom comment">
-              <strong class="d-block text-gray-dark">@username</strong>
-              Some representative placeholder content, with some information about this user. Imagine this being some sort of status update, perhaps?
+              <strong class="d-block text-gray-dark">@{{comment.user}}</strong>
+              {{comment.commentText}}
             </p>
           </div>
-          <div class="d-flex text-muted pt-3">
-            <p class="pb-3 mb-0 small lh-sm border-bottom comment">
-              <strong class="d-block text-gray-dark">@username</strong>
-              Some representative placeholder content, with some information about this user. Imagine this being some sort of status update, perhaps?
-            </p>
-          </div>
-          <form autocomplete="off" method="POST">
+          {% endfor %}
+          
+          
+          <form action = "{% url 'addComment' thread.id%}" autocomplete="off" method="POST">
           {% csrf_token %}
             {% for field in commentForm %}
             <div class="form-group">

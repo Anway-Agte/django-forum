@@ -9,5 +9,6 @@ urlpatterns = [
     path('logout/', views.logout_view , name = 'logout'),
     path('post/' , views.postThread , name = 'post'),
     path('resetpassword/',views.forgotView , name='forgot'),
-    path('profile/<str:username>/',views.profile , name='profile')
+    path('profile/<str:username>/',views.profile , name='profile'),
+    path('addComment/<int:thread_id>/',views.addComment , name='addComment')
 ]

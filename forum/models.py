@@ -6,6 +6,9 @@ class Thread(models.Model):
     title = models.TextField(max_length = 1000)
     content = models.TextField(max_length = 10000) 
 
+    def getComments(self):
+        return self.comments.all()
+
 class Comment(models.Model):
     user = models.ForeignKey(User , on_delete = models.CASCADE)
     thread = models.ForeignKey(Thread , on_delete = models.CASCADE , related_name = 'comments')
